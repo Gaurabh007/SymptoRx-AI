@@ -104,3 +104,4 @@ if st.button("Predict Disease"):
                     st.write(f"- {med}")
             else:
                 st.warning(f"No medicines found for '{disease}'.")
+
