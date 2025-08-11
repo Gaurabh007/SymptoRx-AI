@@ -9,13 +9,13 @@ import re
 # ----------- Load model and data ------------
 @st.cache_resource
 def load_resources():
-    model = pickle.load(open('randomforest.pkl','rb'))
+    model = pickle.load(open('models/randomforest.pkl','rb'))
     train_df = pd.read_csv('data/disease_prediction_dataset/Training.csv')
     train_df.columns = train_df.columns.str.replace('_',' ')
     all_symptoms = train_df.drop(columns=['prognosis']).columns.tolist()
     le = LabelEncoder()
     le.fit(train_df['prognosis'])
-    med_df = pd.read_csv('disease2med.csv')
+    med_df = pd.read_csv('data\med_dataset\disease2med.csv')
     return model, all_symptoms, le, med_df
 
 model, all_symptoms, le, med_df = load_resources()
