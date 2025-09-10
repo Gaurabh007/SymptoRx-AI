@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>SymptoRx AI</title>
+
+        <link href="drop_down.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+            rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <div class="logo">SymptoRx<span>AI</span></div>
+
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="background-layer">
+
+            <!-- ===== CARD BOX ===== -->
+            <div class="card-box">
+                <h2>Symptom picker</h2>
+                <p class="subtext">Start typing to add symptoms (min 4)</p>
+
+                <!-- ===== MULTI-SELECT AREA (same classes your CSS expects) ===== -->
+                <div class="multi-select" id="multiSelect">
+                    <div class="selected-items" id="selectedItems">
+                        <span class="placeholder">No symptoms yet…</span>
+                    </div>
+
+                    <input id="sym-search" type="text" list="sym-list" placeholder="Search symptom…"
+                        autocomplete="off" />
+                    <datalist id="sym-list"></datalist>
+
+                    <div class="dropdown" id="dropdown"></div>
+                </div>
+
+                <!-- action buttons -->
+                <button id="add-btn">Add symptom</button>
+                <button id="clear-btn">Clear all</button>
+                <button id="predict-btn">Predict disease</button>
+
+                <!-- prediction result -->
+                <h3 id="result" class="hidden">Result</h3>
+                <h4 id="meds-heading" style="text-align: left; margin-top: 1rem; display: none;">Medicines recommended:</h4>
+                <ul id="meds"></ul>
+            </div><!-- /.card-box -->
+        </div><!-- /.background-layer -->
+
+        <script src="drop_down.js"></script>
+    </body>
+
+</html>

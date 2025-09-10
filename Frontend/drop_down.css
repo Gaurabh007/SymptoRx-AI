@@ -1,0 +1,150 @@
+/* ========== GLOBAL BACKGROUND & TYPOGRAPHY ========== */
+body {
+    background: url('images/bg-map.png') no-repeat center/cover fixed;
+    font-family: 'Montserrat', sans-serif;
+    color: #eee;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.navbar .logo span {
+    color: #F20101;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.navbar ul li a:hover {
+    color: #F20101;
+}
+
+/* ========== CARD BOX (centre panel) ========== */
+.card-box {
+    background: #fff;
+    color: #000;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .4);
+    padding: 32px 42px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+}
+
+.card-box h2 {
+    margin: 0 0 .8rem;
+    font-size: 28px;
+    font-weight: 700;
+    color: #F20101;
+}
+
+.card-box .subtext, .card-box p {
+    margin: 0 0 1.8rem;
+    font-size: 14px;
+    color: #666;
+}
+
+/* ========== MULTI-SELECT AREA ========== */
+.multi-select {
+    position: relative;
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.multi-select input {
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+    color: #000;
+}
+
+.pill {
+    background: #F20101;
+    color: #fff;
+    border-radius: 16px;
+    padding: 6px 12px;
+    margin: 0 6px 6px 0;
+    font-size: 14px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ========== BUTTONS ========== */
+button {
+    background: #F20101;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 24px;
+    margin: 4px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+button:hover {
+    background: #d00000;
+}
+
+/* ========== RESULT AREA ========== */
+#result {
+    margin-top: 18px;
+    color: #F20101;
+    font-weight: 700;
+}
+
+#meds {
+    list-style: disc;
+    margin: 1rem 0 0 1.5rem;
+    padding: 0;
+    text-align: left;
+    color: #000; 
+}
+
+#meds li {
+    margin-bottom: 0.4rem;
+    color: #000; 
+}
