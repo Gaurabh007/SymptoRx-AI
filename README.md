@@ -127,23 +127,27 @@ The application will be available at `http://127.0.0.1:8000`.
 
 ```
 .
-├── app/
-│   ├── __init__.py
-│   ├── main.py             # FastAPI app instance and routers
-│   ├── models.py           # Pydantic models for request/response
-│   ├── services/
-│   │   ├── prediction.py   # Disease prediction logic
-│   │   └── medicines.py    # Medicine recommendation logic
-│   └── config.py           # Environment variable loading
 ├── data/
-│   ├── training.csv
-│   └── medicines.csv
+│   ├── disease_prediction_dataset/
+│   │   └── Training.csv
+│   └── med_dataset/
+│       └── disease2med.csv
+├── Frontend/
+│   ├── images/
+│   ├── drop_down.css
+│   ├── drop_down.html
+│   ├── drop_down.js
+│   └── styles.css
 ├── models/
-│   └── random_forest.pkl
-├── .env                    # Environment variables (not committed)
-├── .gitignore
+│   └── randomforest.pkl
+├── research/
+│   ├── medication.ipynb
+│   ├── medicine-recommendation-system.ipynb
+│   └── model_training.ipynb
+├── app.py
 ├── README.md
 └── requirements.txt
+
 ```
 
 
