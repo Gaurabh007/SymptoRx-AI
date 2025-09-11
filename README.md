@@ -1,4 +1,4 @@
-# Haven Health: AI-Powered Health Insights API
+# SymptoRx: AI-Powered Health Insights API
 
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![Framework](https://img.shields.io/badge/Framework-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
