@@ -72,16 +72,16 @@ clearBtn.addEventListener("click", () => {
     document.getElementById("meds").innerHTML = "";
 });
 
+/* ===== SEARCH FILTER ===== */
 searchInput.addEventListener("input", () => {
     const term = searchInput.value.toLowerCase();
     const opts = dropdown.querySelectorAll(".dropdown-option");
     opts.forEach((o) => {
-        o.style.display = o.textContent.toLowerCase().includes(term) ?
-            "block" :
-            "none";
+        o.style.display = o.textContent.toLowerCase().includes(term)
+            ? "block"
+            : "none";
     });
 });
-
 
 document.addEventListener("click", (e) => {
     if (!multiSelect.contains(e.target)) {
@@ -96,38 +96,49 @@ predictBtn.addEventListener("click", () => {
         return;
     }
 
-
     fetch(`${API_BASE}/predict`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                symptoms: [...selectedVals]
-            }),
-        })
-        .then((r) => r.json())
-        .then((js) => {
-            const disease = js.disease ?
-                js.disease :
-                js.replace("Predicted disease: ", "");
-            document.getElementById("result").textContent = `Disease: ${disease}`;
-            document.getElementById("result").classList.remove("hidden");
-            // fetch medicines
-            return fetch(
-                `${API_BASE}/medicines/${encodeURIComponent(disease)}?limit=3`
-            );
-        })
-        .then((r) => r.json())
-        .then((js) => {
-            document.getElementById("meds-heading").style.display = "block";
-            const ul = document.getElementById("meds");
-            ul.innerHTML = "";
-            js.medicines.forEach((m) => {
-                const li = document.createElement("li");
-                li.textContent = m;
-                ul.appendChild(li);
-            });
-        })
-        .catch((err) => alert("Error: " + err));
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            symptoms: [...selectedVals]
+        }),
+    })
+    .then((r) => r.json())
+    .then((js) => {
+    const disease = js.disease || js["Predicted disease"] || "";
+    document.getElementById("result").textContent = `Disease: ${disease}`;
+    document.getElementById("result").classList.remove("hidden");
+
+    return fetch(`${API_BASE}/medicines/${encodeURIComponent(disease)}?limit=3`);
+})
+
+    .then((r) => r.json())
+    .then((js) => {
+        document.getElementById("meds-heading").style.display = "block";
+        const ul = document.getElementById("meds");
+        ul.innerHTML = "";
+
+        const meds = js.medicines || [];
+        meds.forEach((m) => {
+            const li = document.createElement("li");
+            li.textContent = m;
+            ul.appendChild(li);
+        });
+
+        if (meds.length === 0) {
+            const li = document.createElement("li");
+            li.textContent = "No medicines found.";
+            ul.appendChild(li);
+        }
+
+        // show source link if available
+        if (js.disease_url) {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${js.disease_url}" target="_blank">More info on medicines</a>`;
+            ul.appendChild(li);
+        }
+    })
+    .catch((err) => alert("Error: " + err));
 });
