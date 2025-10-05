@@ -9,7 +9,7 @@ from fastapi import FastAPI, HTTPException, Query
 from sklearn.preprocessing import LabelEncoder
 
 # Load ML model
-model = pickle.load(open("models/randomforest.pkl", "rb"))
+model = pickle.load(open("models/randomforest.pkl", "+rb"))
 
 # ----------------------------------- MEDICINE DATA -----------------------------------
 MED_CSV = "data/med_dataset/disease2med.csv"
