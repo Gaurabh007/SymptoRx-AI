@@ -53,8 +53,9 @@ all_symptoms = train_df.drop(columns=["prognosis"]).columns.tolist()
 le = LabelEncoder()
 le.fit(train_df["prognosis"])
 
+application = FastAPI()                  # WSGI application
+app = application
 
-app = FastAPI()                                 # FastAPI app
 
 # Mount static frontend
 app.mount("/Frontend", StaticFiles(directory="Frontend"), name="Frontend")
